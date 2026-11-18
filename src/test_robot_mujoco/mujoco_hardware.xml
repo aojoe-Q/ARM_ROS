@@ -1,0 +1,5 @@
+<library path="mujoco_hardware">
+  <class name="test_robot_mujoco/MujocoSystem" type="test_robot_mujoco::MujocoSystem" base_class_type="hardware_interface::SystemInterface">
+    <description>MuJoCo dynamics with position actuators and measured joint feedback.</description>
+  </class>
+</library>

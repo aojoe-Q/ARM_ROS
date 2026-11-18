@@ -1,0 +1,7 @@
+<library path="dm_mc02_hardware">
+  <class name="dm_mc02_hardware/DmMc02System" type="dm_mc02_hardware::DmMc02System" base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Hardware interface for DM-MC02 H7 arm controller via USB CDC (protocol v2)
+    </description>
+  </class>
+</library>

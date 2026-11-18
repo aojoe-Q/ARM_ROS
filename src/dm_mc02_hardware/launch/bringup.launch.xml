@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<launch>
+  <arg name="use_rviz" default="false"/>
+  <arg name="use_moveit" default="false"/>
+  <arg name="allow_enable" default="0"/>
+  <arg name="device" default="/dev/ttyACM0"/>
+  <include file="$(find-pkg-share dm_mc02_hardware)/launch/bringup.launch.py">
+    <arg name="use_rviz" value="$(var use_rviz)"/>
+    <arg name="use_moveit" value="$(var use_moveit)"/>
+    <arg name="allow_enable" value="$(var allow_enable)"/>
+    <arg name="device" value="$(var device)"/>
+  </include>
+</launch>

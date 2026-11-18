@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="test_robot">
+  <xacro:arg name="allow_enable" default="0"/>
+  <xacro:arg name="device" default="/dev/ttyACM0"/>
+
+  <!-- Load robot description from test_robot package -->
+  <xacro:include filename="$(find test_robot)/urdf/test_robot.urdf"/>
+
+  <!-- Load DM-MC02 hardware interface -->
+  <xacro:include filename="$(find dm_mc02_hardware)/urdf/dm_mc02.ros2_control.xacro"/>
+
+  <!-- Instantiate hardware with device path and enable gate -->
+  <!-- device: USB CDC path, ideally via udev symlink like /dev/dm_mc02 -->
+  <!-- allow_enable: 1 = allow ENABLE after switch is UP+UP, 0 = telemetry only -->
+  <xacro:dm_mc02_ros2_control
+    name="dm_mc02"
+    device="$(arg device)"
+    allow_enable="$(arg allow_enable)"/>
+</robot>
+
+
+
+
