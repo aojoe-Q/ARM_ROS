@@ -3,6 +3,8 @@
 > **2026-11-18 软件适配更新：下面保留的是旧版联调记录。当前启动、标定和故障恢复流程请使用 [dm_mc02_hardware/README.md](src/dm_mc02_hardware/README.md)。**
 > ROS 已同步当前固件限位，修复负角度夹爪首帧保持、故障恢复、ACK 匹配、反馈失效处理及协议测试错误。新增 `mapping_calibrated` / `grip_calibrated` 标定状态；旧的夹爪 0～0.7 rad、旧 J2/J3 限位及下文“尚未修复”表格不再描述当前实现。实机 MoveIt 使用 `dm_mc02_hardware bringup.launch.xml use_moveit:=true` 统一入口。固件未由本次软件适配修改。
 
+当前从串口配置开始的逐步操作说明，请阅读 [实机操作指南](REAL_HARDWARE_STEP_BY_STEP.zh-CN.md)。
+
 修订日期：2026-11-02。适用：`ros_test_8` + `S27_TEST_2`（USB 协议 v2）、DM-MC02 / STM32H723VGT6、J1–J6 与夹爪。
 本次整理基于本地源码静态核对；**尚未据此完成 Ubuntu 编译、ROS 运行或实机验收**。
 
