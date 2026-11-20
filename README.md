@@ -1,8 +1,8 @@
-# ros_test_8 — 机械臂 ROS 2 上位机工作空间
+# ARM_ROS — 机械臂 ROS 2 上位机工作空间
 
 六轴机械臂的上位机工程：URDF 模型 → MoveIt2 规划 → ros2_control 控制器 → 三选一的执行后端（真机 USB 串口 / MuJoCo 物理仿真 / 模拟硬件）。
 
-> **这是 `ros/ros_test_8` 分支。** 本仓库另一条线是 `main` 分支的 STM32H723 电控工程（CAN 电机、丝杆夹爪、遥控、图传），两边是独立历史、互不依赖。两条线的关系见 `main` 分支根目录的 `ROS2.md`。
+> **独立仓库 `aojoe-Q/ARM_ROS`。** 本地工作区目录名为 `ARM_ROS`（`colcon` 包名与路径不受影响）。配套的电控固件在另一个仓库 `aojoe-Q/RoboMaster_S27`（STM32H723 工程：CAN 电机、丝杆夹爪、遥控、图传），两边是独立历史、互不依赖。
 
 **当前状态**：离线协议解析、状态机和模型测试已在 Windows 上跑通；完整的 Ubuntu 构建、ROS 启动和实机动作，需要按 [实机操作指南](REAL_HARDWARE_STEP_BY_STEP.zh-CN.md) 逐阶段验证。本文的启动命令是设计意图，不代表已实机验收。
 
