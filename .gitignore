@@ -1,0 +1,30 @@
+# ---- ROS 2 / colcon 构建产物（可重新生成，绝不能进仓库）----
+build/
+install/
+log/
+**/build/
+**/install/
+**/log/
+
+# ---- VS Code C++ IntelliSense 数据库（单个文件近 1 GB）----
+.vscode/browse.vc.db*
+**/.vscode/browse.vc.db*
+.vscode/ipch/
+**/.vscode/ipch/
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# ---- 编辑器 / 系统 ----
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.claude/settings.local.json
+
+# ---- ROS 运行时录制 ----
+*.bag
+*.db3
+*.mcap

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="dm_mc02_ros2_control" params="name device allow_enable">
+    <ros2_control name="${name}" type="system">
+      <hardware>
+        <plugin>dm_mc02_hardware/DmMc02System</plugin>
+        <param name="device">${device}</param>
+        <param name="allow_enable">${allow_enable}</param>
+        <!-- ========== 标定状态 ========== -->
+        <!-- 设置为1表示已完成机械臂关节映射标定 -->
+        <!-- 标定前必须：1) 运行只读遥测  2) 记录URDF零位对应的电机读数  3) 确认各关节运动方向 -->
+        <!-- 标定方法见：REAL_HARDWARE_STEP_BY_STEP.zh-CN.md -->
+        <param name="mapping_calibrated">0</param>
+
+        <!-- ========== 关节映射参数 ========== -->
+        <!-- 转换公式：q_ros = sign * (q_mcu - offset) -->
+        <!-- sign: 方向，只能是 +1.0 或 -1.0 -->
+        <!-- offset: URDF零位时对应的电机角度（rad） -->
+        <!-- 下面的 1.0 和 0.0 是占位值，必须通过实测确定！ -->
+        <!-- Offsets must be measured at the real zero; J3 is not 0.1 rad by definition. -->
+
+        <param name="joint1_sign">1.0</param><param name="joint1_offset">0.0</param>
+        <param name="joint1_mcu_min">-2.96054893</param><param name="joint1_mcu_max">2.81695309</param><param name="joint1_max_step_rad">0.01</param>
+
+        <param name="joint2_sign">1.0</param><param name="joint2_offset">0.0</param>
+        <param name="joint2_mcu_min">-2.05669899</param><param name="joint2_mcu_max">0.0</param><param name="joint2_max_step_rad">0.01</param>
+
+        <param name="joint3_sign">1.0</param><param name="joint3_offset">0.0</param>
+        <param name="joint3_mcu_min">-3.00016972</param><param name="joint3_mcu_max">0.0</param><param name="joint3_max_step_rad">0.01</param>
+
+        <param name="joint4_sign">1.0</param><param name="joint4_offset">0.0</param>
+        <param name="joint4_mcu_min">0.0</param><param name="joint4_mcu_max">3.00567291</param><param name="joint4_max_step_rad">0.01</param>
+
+        <param name="joint5_sign">1.0</param><param name="joint5_offset">0.0</param>
+        <param name="joint5_mcu_min">-0.904316101</param><param name="joint5_mcu_max">1.40938965</param><param name="joint5_max_step_rad">0.01</param>
+
+        <param name="joint6_sign">1.0</param><param name="joint6_offset">0.0</param>
+        <param name="joint6_mcu_min">-0.650879326</param><param name="joint6_mcu_max">2.32408657</param><param name="joint6_max_step_rad">0.01</param>
+
+        <!-- ========== 夹爪标定参数 ========== -->
+        <!-- grip_mcu_min/max: 固件硬限位，不是实测端点 -->
+        <param name="grip_mcu_min">-12.0</param>
+        <param name="grip_mcu_max">0.0</param>
+
+        <!-- 设置为1表示已完成夹爪标定 -->
+        <param name="grip_calibrated">0</param>
+
+        <!-- URDF中夹爪的闭合/张开位置（米） -->
+        <param name="grip_q_close_m">-0.000523</param>
+        <param name="grip_q_open_m">0.009530</param>
+
+        <!-- 实测电机角度对应闭合/张开（rad），下面的0.0是占位值 -->
+        <!-- 标定方法：在只读模式下手动操作夹爪，记录完全闭合和完全张开时的电机角度 -->
+        <param name="grip_mcu_closed">0.0</param>
+        <param name="grip_mcu_open">0.0</param>
+
+        <!-- 是否允许夹爪命令：0=保持使能首帧角度，1=允许控制 -->
+        <!-- 建议：完成grip_calibrated后再设置为1 -->
+        <param name="grip_command_enable">0</param>
+
+        <!-- Timing -->
+        <param name="valid_time_ms">100</param>
+        <param name="state_timeout_ms">100</param>
+      </hardware>
+
+      <joint name="joint1">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      <joint name="joint2">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      <joint name="joint3">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      <joint name="joint4">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      <joint name="joint5">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      <joint name="joint6">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      <joint name="joint8">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+    </ros2_control>
+  </xacro:macro>
+</robot>
+
+
